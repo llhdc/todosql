@@ -16,9 +16,15 @@
     {{#todos}}
       {{^completed}}
         <li>
-          <form action="/todos/{{id}}/done" method="post"><a href="/todos/{{id}}">{{description}}</a> | <input type="submit" name="done" value="Done">
+          <form action="/todos/{{id}}/done" method="post">
+            <a href="/todos/{{id}}">{{description}}</a> | <input type="submit" name="done" value="Done">
           </form>
-          <form action="/todos/{{id}}/delete" method="post"><input type="submit" name="delete" value="Delete"></form>
+          <form action="/todos/{{id}}/delete" method="post">
+            <input type="submit" name="delete" value="Delete">
+          </form>
+          <form action="/todos/{{id}}/edit" method="get">
+            <button type="submit" name="editTodo">Edit</button>
+          </form>
         </li>
       {{/completed}}
     {{/todos}}
@@ -26,7 +32,10 @@
     Completed
     {{#todos}}
       {{#completed}}
-        <li><a href="/todos/{{id}}">{{description}}</a> | {{completed}} </li>
+        <li><a href="/todos/{{id}}">{{description}}</a> |
+          <form action="/todos/{{id}}/delete" method="post"><input type="submit" name="delete" value="Delete"></form>
+          <form action="/todos/{{id}}/undo" method="post"><input type="submit" name="undo" value="Undo"></form>
+        </li>
       {{/completed}}
     {{/todos}}
   </body>
