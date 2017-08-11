@@ -25,7 +25,9 @@ router.post("/add", (req, res) => {
     description: req.body.addTodo,
     completed: false
   })
-  res.redirect("/todos");
+  .then(() => {
+    res.redirect("/todos")
+  })
 })
 
 router.post("/:id/done", (req, res) => {
@@ -83,7 +85,9 @@ router.post("/:id/edit", (req, res) => {
   .catch(err => {
     throw (err);
   })
-  res.redirect("/todos");
+  .then(() => {
+    res.redirect("/todos")
+  })
 })
 
 
